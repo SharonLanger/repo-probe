@@ -29,3 +29,14 @@ npm test
 | `npm run test:coverage` | Run tests with coverage report |
 | `npm run clean` | Remove `dist/` and `coverage/` |
 | `npm run ci` | Lint + typecheck + test (CI pipeline) |
+
+## Running Tests
+
+```bash
+npm test              # all tests
+npm run test:unit     # unit tests only
+npm run test:watch    # watch mode (reruns on file changes)
+npm run test:coverage # with coverage report
+```
+
+Or use the IntelliJ/WebStorm run configurations from the Run dropdown.

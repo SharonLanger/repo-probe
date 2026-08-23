@@ -9,3 +9,23 @@ npm install
 npm run build
 npm test
 ```
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Run from source via ts-node |
+| `npm run build` | Compile TypeScript to `dist/` |
+| `npm start` | Run compiled output |
+| `npm run lint` | Check for lint errors |
+| `npm run lint:fix` | Auto-fix lint errors |
+| `npm run format` | Format all source files |
+| `npm run format:check` | Check formatting without writing |
+| `npm run typecheck` | Type-check without emitting |
+| `npm test` | Run all tests |
+| `npm run test:unit` | Run unit tests only |
+| `npm run test:integration` | Run integration tests only |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
+| `npm run clean` | Remove `dist/` and `coverage/` |
+| `npm run ci` | Lint + typecheck + test (CI pipeline) |

@@ -40,3 +40,20 @@ npm run test:coverage # with coverage report
 ```
 
 Or use the IntelliJ/WebStorm run configurations from the Run dropdown.
+
+## CI/CD
+
+CI runs on **GitHub Actions** via `.github/workflows/ci.yml`.
+
+**Triggers:** push to `main`, any PR targeting `main`.
+
+**Jobs (dependency chain):**
+
+1. `quality` — lint + format check + typecheck (runs first)
+2. `test-unit` — unit tests (waits for quality)
+3. `test-integration` — integration tests (waits for quality, parallel with unit)
+4. `build` — compile TS to JS (waits for both test jobs)
+
+Each job runs on a fresh `ubuntu-latest` VM. If any job fails, the PR is blocked from merging (branch protection).
+
+`cancel-in-progress: true` ensures outdated runs are killed when you push again.

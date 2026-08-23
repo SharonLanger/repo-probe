@@ -36,7 +36,12 @@ jobs:
           node-version: 22
           cache: "npm"
       - run: npm ci
-      - run: npm run test:unit
+      - run: npm run test:unit 2>&1 | tee test-output.txt
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-unit-output
+          path: test-output.txt
 
   test-integration:
     name: Integration Tests
@@ -49,7 +54,12 @@ jobs:
           node-version: 22
           cache: "npm"
       - run: npm ci
-      - run: npm run test:integration
+      - run: npm run test:integration 2>&1 | tee test-integration-output.txt
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-integration-output
+          path: test-integration-output.txt
 
   build:
     name: Build
